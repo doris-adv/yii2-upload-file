@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 File Uploader Widget
 ====================
 File Uploader Widget
@@ -29,3 +30,7 @@ Once the extension is installed, simply use it in your code by  :
 
 ```php
 <?= \sergios\uploadFile\AutoloadExample::widget(); ?>```
+=======
+# yii2-upload-file
+Custom file uploader 
+>>>>>>> c9b20301abc903a3ad8ab8572f1b618f692bb28f
