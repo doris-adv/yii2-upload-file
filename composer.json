@@ -1,0 +1,22 @@
+{
+    "name": "sergios/yii2-upload-file",
+    "description": "File Uploader Widget",
+    "type": "yii2-extension",
+    "keywords": ["yii2","extension","uploadFile"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Sergey Dovzhanutsia",
+            "email": "SergeyDovzhanutsia@gmail.rom"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "~2.0.0",
+        "2amigos/yii2-file-upload-widget": "~1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "sergios\\uploadFile\\": ""
+        }
+    }
+}
