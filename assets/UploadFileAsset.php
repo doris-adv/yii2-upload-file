@@ -6,7 +6,7 @@ use yii\web\View;
 
 class UploadFileAsset extends AssetBundle
 {
-    public $sourcePath = '@vendor/uploadFile/assets/files';
+    public $sourcePath = '@vendor/sergios/uploadFile/assets/files';
 
     public $config = [];
 
