@@ -8,13 +8,13 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-php composer.phar require --prefer-dist sergios/yii2-upload-file "*"
+php composer.phar require --prefer-dist sergios/yii2-upload-file "dev-master"
 ```
 
 or add
 
 ```
-"sergios/yii2-upload-file": "*"
+"sergios/yii2-upload-file": "dev-master"
 ```
 
 to the require section of your `composer.json` file.

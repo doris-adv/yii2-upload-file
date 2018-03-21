@@ -79,7 +79,8 @@ function deleteButton(attribute){
                     id: config.modelId,
                     namespace: config.modelNamespace,
                     path: config.uploadPath,
-                    image: image
+                    fileName: image,
+                    attribute: config.attribute
                 },
                 type: "post",
                 success: function (response) {

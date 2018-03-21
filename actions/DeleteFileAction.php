@@ -15,22 +15,24 @@ class DeleteFileAction extends Action
         $response = ['success' => true];
         $post = Yii::$app->request->post();
         $id = (integer)$post['id'];
-        $file = $post['image'];
+        $fileName = $post['fileName'];
+        $attribute = $post['attribute'];
         $path = $post['path'];
         $namespace = $post['namespace'];
 
         \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
 
         if (\Yii::$app->getRequest()->getIsAjax()) {
-            if (UploadHelper::fileExist($path, $file)) {
-                $response['success'] = UploadHelper::unlinkFile($path, $file);
+            if (UploadHelper::fileExist($path, $fileName)) {
+                $response['success'] = UploadHelper::unlinkFile($path, $fileName);
             }
+
             //if not new record
             if ($id != 0) {
                 /** @var $model ActiveRecord */
                 $model = Yii::createObject(['class' => $namespace]);
                 $record = $model::findOne(['id' => $id]);
-                $record->{$file} = null;
+                $record->{$attribute} = null;
                 $record->save();
             }
         }
