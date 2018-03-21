@@ -7,7 +7,9 @@ use sergios\uploadFile\helpers\UploadHelper;
 use sergios\uploadFile\components\UploaderFactory;
 use yii\base\Widget;
 use yii\db\ActiveRecord;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
+use yii\web\View;
 
 
 class UploadFileWidget extends Widget
@@ -74,6 +76,8 @@ class UploadFileWidget extends Widget
             'modelNamespace' => $config['responseJson']['upload-event']['namespace']
         ];
 
-        $this->view->registerJsVar('fileUploadConfig'.$config['attributes']['attribute'], $jsConfig);
+//        $this->view->registerJsVar('fileUploadConfig'.$config['attributes']['attribute'], $jsConfig);
+        $this->view->registerJs(' var fileUploadConfig' . $config['attributes']['attribute'] . ' = ' . json_encode($jsConfig) . '',
+            View::POS_HEAD);
     }
 }
