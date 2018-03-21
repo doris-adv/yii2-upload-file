@@ -74,11 +74,11 @@ $fullUploadUrl = (is_null($config['model']->{$attribute})) ? '' : $uploadUrl . $
                        var errors = data.result.errors;                      
                        errorStatusUploadedButton("' . $tempAttributeId . '","' . $config['translations']['error-btn-text'] . '");
                                             
-                       for(var i = 0; i <= errors.length; i++){
-                          if(errors[i].length != 0){
-                            $(errorsBlock' . $attribute . ').append(errors[i]+\'<br />\');
-                          }                                    
-                       }                                 
+                       for(var i = 0; i <= errors.length; i++){ 
+                           if(errors[i]){
+                               $(errorsBlock' . $attribute . ').append(errors[i]+\'<br />\');    
+                           }                                                                                 
+                       }                             
                   }                                                                                                  
             }',
         ],
