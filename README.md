@@ -62,7 +62,7 @@ Usage
 -----
 Once the extension is installed, simply use it in your code by  :
 
-###Controller
+##Controller
 ```php
 <?php
 use yii\helpers\ArrayHelper;
@@ -81,7 +81,7 @@ class PostController extends \yii\web\Controller
 }
 ?>
 ```
-### View
+## View
 ## Upload image example
 ```php
 <?php
