@@ -94,7 +94,7 @@ $fullUploadUrl = (is_null($config['model']->{$attribute})) ? '' : $uploadUrl . $
         <br />
         <p class="error-summary"></p>
     </div>
-    <?= Html::img(Url::to('@vendor/sergios/yii2-upload-file/images/preloader.gif'),
+    <?= Html::img(Url::to('../images/preloader.gif'),
         ['class' => 'preloader-' . $attribute, 'style' => 'display:none;width: 80px;']) ?>
 
     <?= $config['form']->field($config['model'], $attribute)->hiddenInput()->label(false) ?>
