@@ -9,7 +9,7 @@ class Path
 {
     public static function getUploadPath($folder = '')
     {
-        $path = Yii::getAlias('@webroot/web/uploads');
+        $path = Yii::getAlias('@webroot/uploads');
         if (!empty($folder)) {
             $path .= '/' . trim($folder, '/');
             if (!FileHelper::createDirectory(FileHelper::normalizePath($path))) {
