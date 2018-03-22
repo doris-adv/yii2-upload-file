@@ -7,7 +7,7 @@ use sergios\uploadFile\components\Uploader;
 use yii\base\InvalidConfigException;
 use yii\imagine\Image;
 use Imagine\Image\Box;
-use common\helpers\Path;
+use sergios\uploadFile\helpers\Path;
 use Yii;
 
 class UploadHelper

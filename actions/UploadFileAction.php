@@ -5,7 +5,7 @@ namespace sergios\uploadFile\actions;
 use yii\base\Action;
 use Yii;
 use sergios\uploadFile\helpers\UploadHelper;
-use common\helpers\Path;
+use sergios\uploadFile\helpers\Path;
 use yii\db\ActiveRecord;
 use yii\web\UploadedFile;
 use yii\helpers\ArrayHelper;
