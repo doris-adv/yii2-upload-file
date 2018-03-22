@@ -2,6 +2,7 @@
 use dosamigos\fileupload\FileUpload;
 use yii\helpers\Html;
 use sergios\uploadFile\helpers\UploadHelper;
+use yii\helpers\Url;
 
 /**
  * Template for custom uploading file (for image files)
@@ -93,7 +94,7 @@ $fullUploadUrl = (is_null($config['model']->{$attribute})) ? '' : $uploadUrl . $
         <br />
         <p class="error-summary"></p>
     </div>
-    <?= Html::img('../images/preloader.gif',
+    <?= Html::img(Url::to('@vendor/sergios/yii2-upload-file/images/preloader.gif'),
         ['class' => 'preloader-' . $attribute, 'style' => 'display:none;width: 80px;']) ?>
 
     <?= $config['form']->field($config['model'], $attribute)->hiddenInput()->label(false) ?>
