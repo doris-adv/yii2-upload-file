@@ -9,40 +9,6 @@ use Yii;
 
 abstract class Uploader
 {
-    /**
-     *          DOCUMENTATION FOR USING UploadFileWidget
-     *
-     * UploadFileWidget::widget([
-     * 'model' => $model, - required ( it is current model )
-     * 'form' => $form, - required ( object - yii\widgets\ActiveForm )
-     * 'uploadType' => 'audio', - required (allow types are - audio | video | file | image )
-     * 'language' => 'en-US', - required ( allow languages are - en-US | ru-RU | en-US )
-     * 'uploadPath' => alias, - required, must be alias to uploading path
-     * 'urlOptions' => [ - not required (by default - 'uploadUrl' => 'upload-file', 'deleteUrl' => 'delete-file')
-     * 'uploadUrl' => 'upload/custom-upload-url',
-     * 'deleteUrl' => 'delete/custom-deleting-url',
-     * ],
-     * 'attributes' => [ - required
-     * 'attribute' => 'image', - required, this attribute needed for saving file name to db
-     * 'tempAttribute' => 'tempUploadImage' - required, this attribute needed for validation and to getting file from global array $_FILES
-     * ],
-     * 'options' => [
-     * 'multiple' => false, - not required, by default false
-     * 'uploadMineType' => custom Mine Type, - not required, by default mineType only for images ( 'image/gif,image/jpeg,image/pjpeg,image/png,image/tiff,image/vnd.microsoft.icon,image/vnd.wap.wbmp' )
-     * 'maxFileSize' => 2, not required, by default 1
-     * 'resize' => [ - not required
-     * 'resizeWidth' => 450, - not required
-     * 'resizeHeight' => 450, - not required
-     * ],
-     * ],
-     * 'templateOptions' => [ - not required
-     * 'uploadLimitWindow' => true, - not required ( show window with resize size if resize option was initialized )
-     * 'bootstrapOuterWrapClasses' => 'col-xs-12 col-sm-12 col-md-6 col-lg-6', - not required (bootstrap classes for outer wrap UploadFileWidget)
-     * 'bootstrapInnerWrapClasses' => 'col-xs-6 col-sm-6 col-md-6 col-lg-12' - not required (bootstrap classes for inner wrap UploadFileWidget)
-     * ]
-     * ])
-     */
-
     /** UPLOAD TYPES */
     const UPLOAD_TYPE_IMAGE = 'image';
     const UPLOAD_TYPE_VIDEO = 'video';
@@ -69,7 +35,6 @@ abstract class Uploader
         'bootstrapInnerWrapClasses' => 'col-xs-12 col-sm-12 col-md-12 col-lg-12',
     ];
 
-
     /**
      * @var $model object
      */
@@ -88,7 +53,7 @@ abstract class Uploader
     public $url;
 
     /**
-     * @var $options array
+     * @var $attributes array
      *
      * [
      *   'attribute' => 'image' -  Main attribute

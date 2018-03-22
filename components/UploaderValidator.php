@@ -29,7 +29,6 @@ class UploaderValidator
         self::validateAttributesParams($uploader);
         self::prepareUrlOptions($uploader);
         self::prepareOptions($uploader);
-
     }
 
     /**
@@ -39,7 +38,6 @@ class UploaderValidator
      */
     private static function prepareUrlOptions(Uploader $uploader)
     {
-
         /** Check on errors params in urlOptions config */
         if (!self::keyExist('uploadUrl', $uploader->urlOptions)) {
             throw new InvalidConfigException('uploadUrl - required param in urlOptions config');
@@ -100,7 +98,6 @@ class UploaderValidator
      */
     private static function validateRequiredAttributes(Uploader $uploader)
     {
-
         if (empty($uploader->model) || self::getType($uploader->model) != 'object') {
             throw new InvalidConfigException('Model - is required param and it must be object');
         }

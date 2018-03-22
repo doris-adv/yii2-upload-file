@@ -3,7 +3,6 @@
 namespace sergios\uploadFile\helpers;
 
 use sergios\uploadFile\components\FileUploader;
-
 use sergios\uploadFile\components\Uploader;
 use yii\base\InvalidConfigException;
 use yii\imagine\Image;

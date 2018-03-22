@@ -76,7 +76,6 @@ class UploadFileWidget extends Widget
             'modelNamespace' => $config['responseJson']['upload-event']['namespace']
         ];
 
-//        $this->view->registerJsVar('fileUploadConfig'.$config['attributes']['attribute'], $jsConfig);
         $this->view->registerJs(' var fileUploadConfig' . $config['attributes']['attribute'] . ' = ' . json_encode($jsConfig) . '',
             View::POS_HEAD);
     }
