@@ -60,8 +60,9 @@ yii2-upload-file
 
 Usage
 -----
+```
 Once the extension is installed, simply use it in your code by  :
-
+```
 ##Controller
 ```php
 <?php
