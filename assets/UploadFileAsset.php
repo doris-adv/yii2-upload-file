@@ -9,7 +9,9 @@ class UploadFileAsset extends AssetBundle
     public $sourcePath = '@vendor/sergios/yii2-upload-file/assets/files';
 
     public $config = [];
-    public $css = [];
+    public $css = [
+        'css/upload-file.css'
+    ];
     public $js = [
         'js/upload-file.js'
     ];

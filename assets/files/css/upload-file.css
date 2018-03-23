@@ -1,0 +1,11 @@
+.file-upload-preloader{
+    background: url(../images/preloader.gif) center no-repeat;
+    width: 60px;
+    height: 60px;
+    background-size: cover;
+    margin-top: -10px;
+    float: left;
+}
+.fileinput-button{
+    float: left;
+}
