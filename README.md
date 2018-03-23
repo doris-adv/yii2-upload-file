@@ -30,6 +30,7 @@ yii2-upload-file
     attributes - required (array, attribute - needs for saving file name to db and validate (in model rules), tempAttribute needs for transfer uploaded file from asociative array $_FILES, it is public property in your model)
     uploadPath - required (type string)  
 ### Additional properties
+    moduleName - not required, if you use basic version Yii2 you must set muduleName (it is name of you admin module? you may find in in your config).  
     urlOptions - not required (by default uploadUrl => upload-file, deleteUrl => delete-file), you may set your custom urls and determine them in your controller 
     options => [
         1) multiple - by default false,
@@ -56,7 +57,8 @@ yii2-upload-file
         2) bootstrapOuterWrapClasses -  by default col-xs-12 col-sm-12 col-md-12 col-lg-12, you may set your custom classes.
         2) bootstrapInnerWrapClasses -  by default col-xs-12 col-sm-12 col-md-12 col-lg-12, you may set your custom classes.
     ] 
-> NOTE: You must set in params.php domain name (example 'domain' => 'http://example.domain'). For stable generating path for preview. 
+> NOTE: You must set in params.php domain name (example 'domain' => 'http://example.domain'), for stable generating path for preview. 
+If you using basic version Yii2 you must set moduleName option, for stable generating urls to default processing actions.   
 
 Usage
 -----
