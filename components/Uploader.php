@@ -9,6 +9,8 @@ use Yii;
 
 abstract class Uploader
 {
+    const FRAMEWORK_ID_BASIC = 'basic';
+
     /** UPLOAD TYPES */
     const UPLOAD_TYPE_IMAGE = 'image';
     const UPLOAD_TYPE_VIDEO = 'video';
@@ -35,6 +37,8 @@ abstract class Uploader
         'bootstrapInnerWrapClasses' => 'col-xs-12 col-sm-12 col-md-12 col-lg-12',
     ];
 
+    const DEFAULT_MODULE_NAME = 'admin';
+
     /**
      * @var $model object
      */
@@ -47,6 +51,8 @@ abstract class Uploader
     public $uploadType;
 
     public $uploadPath;
+
+    public $moduleName;
 
     public $urlOptions;
 
@@ -117,11 +123,28 @@ abstract class Uploader
             }
         }
 
+        $this->moduleName = (isset($this->moduleName)) ? trim($this->moduleName) : self::DEFAULT_MODULE_NAME;
         $this->language = (isset($this->language)) ? trim($this->language) : self::DEFAULT_LANGUAGE ;
-        $this->urlOptions = (isset($this->urlOptions)) ? $this->urlOptions : self::DEFAULT_URL_OPTIONS;
+        $this->urlOptions = (isset($this->urlOptions)) ? $this->urlOptions : $this->prepareDefaultUrlOptions();
         $this->defaultOptions['uploadMineType'] = $this->getDefaultMineType();
         $this->options = ArrayHelper::merge($this->defaultOptions,$this->options);
         $this->templateOptions = ArrayHelper::merge(self::DEFAULT_TEMPLATE_OPTIONS,$this->templateOptions);
+    }
+
+    /**
+     * This method prepare default url option, taking into account version YII2 (basic or advanced)
+     * @return array
+     */
+    protected function prepareDefaultUrlOptions(){
+        if(Yii::$app->id == self::FRAMEWORK_ID_BASIC){
+            $currentController = Yii::$app->controller->id;
+            return [
+                'uploadUrl' => "/{$this->moduleName}/{$currentController}/upload-file",
+                'deleteUrl' => "/{$this->moduleName}/{$currentController}/delete-file",
+            ];
+        }else{
+            return self::DEFAULT_URL_OPTIONS;
+        }
     }
 
     /**

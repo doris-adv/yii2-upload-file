@@ -4,12 +4,13 @@ namespace sergios\uploadFile\helpers;
 use Yii;
 use yii\helpers\FileHelper;
 use yii\base\InvalidCallException;
+use sergios\uploadFile\components\Uploader;
 
 class Path
 {
     public static function getUploadPath($folder = '')
     {
-        $path = (Yii::$app->id == 'basic') ?  Yii::getAlias('@webroot/uploads') : Yii::getAlias('@frontend/web/uploads');
+        $path = (Yii::$app->id == Uploader::FRAMEWORK_ID_BASIC) ?  Yii::getAlias('@webroot/uploads') : Yii::getAlias('@frontend/web/uploads');
         if (!empty($folder)) {
             $path .= '/' . trim($folder, '/');
             if (!FileHelper::createDirectory(FileHelper::normalizePath($path))) {
@@ -33,8 +34,4 @@ class Path
         return '/uploads/' . trim($folder, '/') . '/' . trim($name, '/');
     }
 
-    public static function getUrlForDefaultImages($folder, $name)
-    {
-        return '/images/' . trim($folder, '/') . '/' . trim($name, '/');
-    }
 }

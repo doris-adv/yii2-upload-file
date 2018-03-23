@@ -2,6 +2,7 @@
 
 namespace sergios\uploadFile\components;
 
+use Yii;
 use yii\helpers\ArrayHelper;
 use yii\base\InvalidConfigException;
 
@@ -26,9 +27,23 @@ class UploaderValidator
      */
     private static function validateAnotherAttributes(Uploader $uploader)
     {
+        self::findAdminModule($uploader);
         self::validateAttributesParams($uploader);
         self::prepareUrlOptions($uploader);
         self::prepareOptions($uploader);
+    }
+
+    /**
+     * This method check if exist admin module in basic YII2 aplication
+     * @param Uploader $uploader
+     * @throws InvalidConfigException
+     */
+    private static function findAdminModule(Uploader $uploader){
+        if(Yii::$app->id == $uploader::FRAMEWORK_ID_BASIC){
+            if(!self::keyExist($uploader->moduleName,Yii::$app->modules)){
+                throw new InvalidConfigException("Module with name {$uploader->moduleName}, does not exist.");
+            }
+        }
     }
 
     /**

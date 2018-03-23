@@ -26,6 +26,8 @@ class UploadFileWidget extends Widget
 
     public $uploadPath = null;
 
+    public $moduleName = null;
+
     public $urlOptions; // url configuration array
 
     /** @var $attributes array */
