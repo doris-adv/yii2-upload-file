@@ -58,6 +58,7 @@ yii2-upload-file
         2) bootstrapInnerWrapClasses -  by default col-xs-12 col-sm-12 col-md-12 col-lg-12, you may set your custom classes.
     ] 
 > NOTE: You must set in params.php domain name (example 'domain' => 'http://example.domain'), for stable generating path for preview. 
+
 > NOTE: If you using basic version Yii2 you must set moduleName option, for stable generating urls to default processing actions.   
 
 Usage
