@@ -1,4 +1,3 @@
-
 function showPrevByUploadType(fileName,attribute){
     var config = getConfig(attribute);
     var imagePrev = $(document).find('.image-'+attribute);
@@ -71,34 +70,36 @@ function deleteButton(attribute){
     var config = getConfig(attribute);
     var deleteButton = $(document).find('#deleteImageButton'+config.attribute);
     deleteButton.on('click',function(){
-        if (confirm(config.translations['deleting-prompt-text'])) {
-            var image = $(document).find('#'+config.attributeId).val();
-            $.ajax({
-                url: config.deleteUrl,
-                data: {
-                    id: config.modelId,
-                    namespace: config.modelNamespace,
-                    path: config.uploadPath,
-                    fileName: image,
-                    attribute: config.attribute
-                },
-                type: "post",
-                success: function (response) {
-                    if(response.success){
-                        $(document).find('#'+config.attributeId).removeAttr('value');
-                        defaultStatusUploadedButton(
-                            config.tempAttributeId,
-                            config.translations['upload-file-text']+" "+config.attribute
-                        );
-                        unlockUploadButton(config.tempAttributeId);
-                        $(document).find('.wrapUpload'+config.attribute).hide();
-                    }
-                },
-                dataType: "json"
-            });
-        }else{
-            return true;
-        }
+        bootbox.confirm(config.translations['deleting-prompt-text'], function(confirmStatus){
+            if (confirmStatus) {
+                var image = $(document).find('#' + config.attributeId).val();
+                $.ajax({
+                    url: config.deleteUrl,
+                    data: {
+                        id: config.modelId,
+                        namespace: config.modelNamespace,
+                        path: config.uploadPath,
+                        fileName: image,
+                        attribute: config.attribute
+                    },
+                    type: "post",
+                    success: function (response) {
+                        if (response.success) {
+                            $(document).find('#' + config.attributeId).removeAttr('value');
+                            defaultStatusUploadedButton(
+                                config.tempAttributeId,
+                                config.translations['upload-file-text'] + " " + config.attribute
+                            );
+                            unlockUploadButton(config.tempAttributeId);
+                            $(document).find('.wrapUpload' + config.attribute).hide();
+                        }
+                    },
+                    dataType: "json"
+                });
+            }else{
+                return true;
+            }
+        });
     });
 }
 

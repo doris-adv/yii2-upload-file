@@ -15,7 +15,8 @@
         "php": ">=5.6.0",
         "yiisoft/yii2": "~2.0.0",
         "yiisoft/yii2-imagine": "^2.1",
-        "2amigos/yii2-file-upload-widget": "~1.0"
+        "2amigos/yii2-file-upload-widget": "~1.0",
+        "xj/yii2-bootbox-widget": "^1.0"
     },
     "autoload": {
         "psr-4": {
