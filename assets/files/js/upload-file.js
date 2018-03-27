@@ -70,8 +70,7 @@ function deleteButton(attribute){
     var config = getConfig(attribute);
     var deleteButton = $(document).find('#deleteImageButton'+config.attribute);
     deleteButton.on('click',function(){
-        bootbox.confirm(config.translations['deleting-prompt-text'], function(confirmStatus){
-            if (confirmStatus) {
+        if (confirm(config.translations['deleting-prompt-text'])) {
                 var image = $(document).find('#' + config.attributeId).val();
                 $.ajax({
                     url: config.deleteUrl,
@@ -100,7 +99,6 @@ function deleteButton(attribute){
                 return true;
             }
         });
-    });
 }
 
 //get current config from registered in head variables
