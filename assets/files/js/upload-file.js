@@ -87,7 +87,7 @@ function deleteButton(attribute){
                             $(document).find('#' + config.attributeId).removeAttr('value');
                             defaultStatusUploadedButton(
                                 config.tempAttributeId,
-                                config.translations['upload-file-text'] + " " + config.attribute
+                                config.translations['upload-file-text'] + " " + config.attributeName
                             );
                             unlockUploadButton(config.tempAttributeId);
                             $(document).find('.wrapUpload' + config.attribute).hide();
