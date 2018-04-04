@@ -77,7 +77,7 @@ $fullUploadUrl = (is_null($config['model']->{$attribute})) ? '' : $uploadUrl . $
                                             
                        for(var i = 0; i <= errors.length; i++){ 
                            if(errors[i]){
-                               $(errorsBlock' . $attribute . ').append(errors[i]+\'<br />\');    
+                               $(errorsBlock' . $attribute . ').append(\'<br />\'+errors[i]);    
                            }                                                                                 
                        }                             
                   }                                                                                                  
