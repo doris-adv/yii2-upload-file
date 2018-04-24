@@ -38,9 +38,10 @@ class UploaderValidator
      * @param Uploader $uploader
      * @throws InvalidConfigException
      */
-    private static function findAdminModule(Uploader $uploader){
-        if(Yii::$app->id == $uploader::FRAMEWORK_ID_BASIC){
-            if(!self::keyExist($uploader->moduleName,Yii::$app->modules)){
+    private static function findAdminModule(Uploader $uploader)
+    {
+        if (Yii::$app->id == $uploader::FRAMEWORK_ID_BASIC) {
+            if (!self::keyExist($uploader->moduleName, Yii::$app->modules)) {
                 throw new InvalidConfigException("Module with name {$uploader->moduleName}, does not exist.");
             }
         }
@@ -143,8 +144,8 @@ class UploaderValidator
             throw new InvalidConfigException('attributes - must be set, it required param');
         }
 
-        if (!ArrayHelper::keyExists(trim($uploader->language), $uploader->getTranslations())) {
-            $languages = array_keys($uploader->getTranslations());
+        if (!ArrayHelper::isIn(trim($uploader->language), self::permissibleLanguages())) {
+            $languages = array_values(self::permissibleLanguages());
             $languageStr = '';
             foreach ($languages as $key => $language) {
                 $languageStr .= ' ' . $language;
@@ -174,5 +175,14 @@ class UploaderValidator
     public static function getType($attribute)
     {
         return gettype($attribute);
+    }
+
+    /**
+     * Set permissible languages for validation
+     * @return array
+     */
+    private static function permissibleLanguages()
+    {
+        return ['en-US', 'ru-RU', 'uk-UA'];
     }
 }

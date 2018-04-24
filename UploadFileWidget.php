@@ -7,7 +7,6 @@ use sergios\uploadFile\helpers\UploadHelper;
 use sergios\uploadFile\components\UploaderFactory;
 use yii\base\Widget;
 use yii\db\ActiveRecord;
-use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\web\View;
 

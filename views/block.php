@@ -90,9 +90,9 @@ $fullUploadUrl = (is_null($config['model']->{$attribute})) ? '' : $uploadUrl . $
     ', $this::POS_READY);
     }
     ?>
-
+    <br />
+    <br />
     <div class="errors-<?= $attribute ?> hide">
-        <br />
         <p class="error-summary"></p>
     </div>
 

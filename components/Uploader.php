@@ -25,7 +25,7 @@ abstract class Uploader
         'deleteUrl' => 'delete-file',
     ];
 
-    protected $defaultOptions =  [
+    protected $defaultOptions = [
         'multiple' => false,
         'maxFileSize' => 3,
         'resize' => false,
@@ -93,7 +93,7 @@ abstract class Uploader
     public function getConfig()
     {
         if (UploaderValidator::validate($this)) {
-            $this->translations = $this->getTranslations()[$this->language];//get translations
+            $this->translations = $this->getTranslations();//get translations
             $this->prepareResponseJson();
             $this->generateConfig();
 
@@ -116,7 +116,7 @@ abstract class Uploader
     {
         if (!empty($options)) {
             foreach ($options as $key => $value) {
-                if(!property_exists($this,$key)){
+                if (!property_exists($this, $key)) {
                     throw new InvalidConfigException("Property {$key} are not available");
                 }
                 $this->{$key} = $options[$key];
@@ -124,25 +124,26 @@ abstract class Uploader
         }
 
         $this->moduleName = (isset($this->moduleName)) ? trim($this->moduleName) : self::DEFAULT_MODULE_NAME;
-        $this->language = (isset($this->language)) ? trim($this->language) : self::DEFAULT_LANGUAGE ;
+        $this->language = (isset($this->language)) ? trim($this->language) : self::DEFAULT_LANGUAGE;
         $this->urlOptions = (isset($this->urlOptions)) ? $this->urlOptions : $this->prepareDefaultUrlOptions();
         $this->defaultOptions['uploadMineType'] = $this->getDefaultMineType();
-        $this->options = ArrayHelper::merge($this->defaultOptions,$this->options);
-        $this->templateOptions = ArrayHelper::merge(self::DEFAULT_TEMPLATE_OPTIONS,$this->templateOptions);
+        $this->options = ArrayHelper::merge($this->defaultOptions, $this->options);
+        $this->templateOptions = ArrayHelper::merge(self::DEFAULT_TEMPLATE_OPTIONS, $this->templateOptions);
     }
 
     /**
      * This method prepare default url option, taking into account version YII2 (basic or advanced)
      * @return array
      */
-    protected function prepareDefaultUrlOptions(){
-        if(Yii::$app->id == self::FRAMEWORK_ID_BASIC){
+    protected function prepareDefaultUrlOptions()
+    {
+        if (Yii::$app->id == self::FRAMEWORK_ID_BASIC) {
             $currentController = Yii::$app->controller->id;
             return [
                 'uploadUrl' => "/{$this->moduleName}/{$currentController}/upload-file",
                 'deleteUrl' => "/{$this->moduleName}/{$currentController}/delete-file",
             ];
-        }else{
+        } else {
             return self::DEFAULT_URL_OPTIONS;
         }
     }
@@ -165,54 +166,11 @@ abstract class Uploader
     }
 
     /**
-     * This method generate translations for upload template text (for view)
+     * This method get translations for upload template text (for view)
      */
     public function getTranslations()
     {
-        return [
-            'uk-UA' => [
-                'alert-text' => 'Мінімальні вимоги для завантаження ',
-                'width' => 'ширина',
-                'height' => 'висота',
-                'upload-file-text' => 'Завантажити ',
-                'after-upload-alert' => 'Потрібно видалити файл щоб завантажити новий!!!',
-                'deleting-prompt-text' => 'Ви підтверджуєте видалення файла?',
-                'size-label-text' => 'Розмір ',
-                'deleting button-text' => 'Видалити файл',
-                'file-anchor-text' => 'Переглянути файл',
-                'success-alert-text-audio' => 'Аудіо файл успішно завантажено',
-                'success-bottom-text-audio' => 'Прослуховувати файл в плеєрі можна після збереження запису!!!!',
-                'error-btn-text' => 'Помилка завантаження файла',
-            ],
-            'ru-RU' => [
-                'alert-text' => 'Минимальные требования для загрузки ',
-                'width' => 'ширина',
-                'height' => 'висота',
-                'upload-file-text' => 'Загрузить ',
-                'after-upload-alert' => 'Нужно удалить файл чтобы загрузить новый!!!',
-                'deleting-prompt-text' => 'Вы подтверждаете удаление файла?',
-                'size-label-text' => 'Размер ',
-                'deleting button-text' => 'Удалить файл',
-                'file-anchor-text' => 'Посмотреть файл',
-                'success-alert-text-audio' => 'Аудио файл успешно загружен',
-                'success-bottom-text-audio' => 'Прослушивать файл в плеере можно после сохранения записи!!!!',
-                'error-btn-text' => 'Ошибка загрузки файла',
-            ],
-            'en-US' => [
-                'alert-text' => 'Minimum requirements for download ',
-                'width' => 'width',
-                'height' => 'height',
-                'upload-file-text' => 'Upload ',
-                'after-upload-alert' => 'You need to delete a file to download a new one!!!',
-                'deleting-prompt-text' => 'You confirm the deletion of the file? ',
-                'size-label-text' => 'Size ',
-                'deleting button-text' => 'Delete the file',
-                'file-anchor-text' => 'View file',
-                'success-alert-text-audio' => 'The audio file has been successfully uploaded',
-                'success-bottom-text-audio' => 'Listen to the file in the player after saving the recording!!!!',
-                'error-btn-text' => 'Error loading file',
-            ]
-        ];
+        return require(Yii::getAlias('@vendor/sergios/yii2-upload-file/messages/default/') . "{$this->language}.php");
     }
 
     /**
@@ -220,26 +178,9 @@ abstract class Uploader
      * @param $language
      * @return mixed
      */
-    public static function translateErrors($language){
-        $errors = [
-            'uk-UA' => [
-                'resize-width-error' => 'Ширина завантажуємої фотографії повинна бути рівна або більша ',
-                'resize-height-error' => 'Висота завантажуємої фотографії повинна бути рівна або більша ',
-                'max-file-size-error' => 'Завантажуємий файл занадто великій, файл не повинен перевищувати '
-            ],
-            'ru-RU' => [
-                'resize-width-error' => 'Ширина загружаемых фотографии должна быть равна или больше ',
-                'resize-height-error' => 'Высота загружаемых фотографии должна быть равна или больше ',
-                'max-file-size-error' => 'Загружаемых файл слишком большой, файл не должен превышать '
-            ],
-            'en-US' => [
-                'resize-width-error' => 'The width of the uploaded photo should be equal or larger ',
-                'resize-height-error' => 'The height of the uploaded photo should be equal or larger ',
-                'max-file-size-error' => 'The uploaded file is too large, the file must not exceed '
-            ]
-        ];
-
-        return ArrayHelper::getValue($errors,$language);
+    public static function translateErrors($language)
+    {
+        return require(Yii::getAlias('@vendor/sergios/yii2-upload-file/messages/errors/') . "{$language}.php");
     }
 
     /**

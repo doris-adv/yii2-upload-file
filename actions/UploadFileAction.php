@@ -38,6 +38,7 @@ class UploadFileAction extends Action
 
             $maxSizeErrors = UploadHelper::checkOnMaxFileSize($maxFileSize, $image->size, $language);
             if (!empty($maxSizeErrors)) {
+                $this->unlinkFile($path,$imageName);
                 $response['success'] = false;
                 $response['errors'] = $maxSizeErrors;
 
@@ -84,5 +85,16 @@ class UploadFileAction extends Action
         }
 
         return $resizeOptions;
+    }
+
+    /**
+     * Remove file
+     * @param $folder
+     * @param $name
+     */
+    private function unlinkFile($folder,$name){
+        if(UploadHelper::fileExist($folder,$name)){
+            UploadHelper::unlinkFile($folder,$name);
+        }
     }
 }
