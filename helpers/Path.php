@@ -15,10 +15,8 @@ class Path
         $path = self::generateWebRoot();
         if (!empty($folder)) {
             $path .= '/' . trim($folder, '/');
-            if(!isset(Yii::$app->params['deleteAction'])){
-                if (!FileHelper::createDirectory(FileHelper::normalizePath($path))) {
-                    throw new InvalidCallException("Directory specified in 'path' attribute doesn't exist or cannot be created.");
-                }
+            if (!FileHelper::createDirectory(FileHelper::normalizePath($path))) {
+                throw new InvalidCallException("Directory specified in 'path' attribute doesn't exist or cannot be created.");
             }
         }
         return $path . '/';
@@ -60,6 +58,10 @@ class Path
 
         if (stristr($path, 'backend') !== false) {
             $path = str_replace('backend', 'frontend', $path);
+        }
+
+        if (strpos($path, 'web') == false) {
+            throw new InvalidCallException("Your DOCUMENT ROOT must contain web ".$path.". Please check your DOCUMENT ROOT settings on your server.");
         }
 
         return $path;
