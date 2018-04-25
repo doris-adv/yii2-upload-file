@@ -15,7 +15,7 @@ class Path
         $path = self::generateWebRoot();
         if (!empty($folder)) {
             $path .= '/' . trim($folder, '/');
-            if (!FileHelper::createDirectory(FileHelper::normalizePath($path))) {
+            if (!FileHelper::createDirectory($path)) {
                 throw new InvalidCallException("Directory specified in 'path' attribute doesn't exist or cannot be created.");
             }
         }
@@ -54,7 +54,8 @@ class Path
      */
     private static function generateWebRoot()
     {
-        $path = $_SERVER['DOCUMENT_ROOT'] . '/' . self::UPLOAD_FOLDER;
+        $path = $_SERVER['DOCUMENT_ROOT'] . '////' . self::UPLOAD_FOLDER;
+        $path = FileHelper::normalizePath($path);
 
         if (stristr($path, 'backend') !== false) {
             $path = str_replace('backend', 'frontend', $path);
