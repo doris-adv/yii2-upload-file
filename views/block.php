@@ -2,7 +2,6 @@
 use dosamigos\fileupload\FileUpload;
 use yii\helpers\Html;
 use sergios\uploadFile\helpers\UploadHelper;
-use yii\helpers\Url;
 
 /**
  * Template for custom uploading file (for image files)
@@ -55,7 +54,7 @@ $fullUploadUrl = (is_null($config['model']->{$attribute})) ? '' : $uploadUrl . $
                   var errorsBlock' . $attribute . ' = $(document).find(\'.errors-' . $attribute . ' .error-summary\');
                   errorsBlock' . $attribute . '.html(\'\');
                   if(!errorsBlock' . $attribute . '.parent().hasClass(\'hide\')){
-                    errorsBlock' . $attribute . '.parent().addClass(\'hide\')
+                    errorsBlock' . $attribute . '.parent().addClass(\'hide\');
                   }
                    
                   if(data.result.success){
@@ -63,12 +62,14 @@ $fullUploadUrl = (is_null($config['model']->{$attribute})) ? '' : $uploadUrl . $
                            removeValidationErrors("' . $attribute . '");//remove all validation errors 
                            showPrevByUploadType(data.result.image,"' . $attribute . '");//show preview by upload type file
                            $(document).find(\'#' . $attributeId . '\').attr(\'value\',data.result.image);   
+                           $(document).find("#' . $tempAttributeId . '").removeAttr(\'disabled\');
                        } 
                        $(document).find(\'button[type="submit"]\').removeAttr(\'disabled\');
                        $(document).find(\'.preloader-' . $attribute . '\').hide();                        
                        $(document).find(\'.prev-title-' . $attribute . ', .wrapUpload' . $attribute . '\').show();                
-                       blockUploadButton("' . $tempAttributeId . '","' . $attribute . '");                                                            
+                       blockUploadButton("' . $tempAttributeId . '","' . $attribute . '");                       
                   }else{
+                       $(document).find("#' . $tempAttributeId . '").removeAttr(\'disabled\'); 
                        $(document).find(\'button[type="submit"]\').removeAttr(\'disabled\');
                        $(document).find(\'.preloader-' . $attribute . '\').hide();
                        errorsBlock' . $attribute . '.parent().removeClass(\'hide\');                           
@@ -81,7 +82,8 @@ $fullUploadUrl = (is_null($config['model']->{$attribute})) ? '' : $uploadUrl . $
                            }                                                                                 
                        }                             
                   }
-                  $(document).find(\'#' . $tempAttributeId . '\').parent().removeClass(\'btn-default\');                    
+                  $(document).find(\'#' . $tempAttributeId . '\').parent().removeClass(\'btn-default\');
+                  
             }',
         ],
     ]);
@@ -91,9 +93,7 @@ $fullUploadUrl = (is_null($config['model']->{$attribute})) ? '' : $uploadUrl . $
     ', $this::POS_READY);
     }
     ?>
-    <br />
-    <br />
-    <div class="errors-<?= $attribute ?> hide">
+    <div class="errorsWrapper errors-<?= $attribute ?> hide">
         <p class="error-summary"></p>
     </div>
 
