@@ -23,6 +23,7 @@ class DeleteFileAction extends Action
         \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
 
         if (\Yii::$app->getRequest()->getIsAjax()) {
+            Yii::$app->params['deleteAction'] = true;
             if (UploadHelper::fileExist($path, $fileName)) {
                 $response['success'] = UploadHelper::unlinkFile($path, $fileName);
             }

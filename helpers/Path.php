@@ -15,8 +15,10 @@ class Path
         $path = self::generateWebRoot();
         if (!empty($folder)) {
             $path .= '/' . trim($folder, '/');
-            if (!FileHelper::createDirectory(FileHelper::normalizePath($path))) {
-                throw new InvalidCallException("Directory specified in 'path' attribute doesn't exist or cannot be created.");
+            if(!isset(Yii::$app->params['deleteAction'])){
+                if (!FileHelper::createDirectory(FileHelper::normalizePath($path))) {
+                    throw new InvalidCallException("Directory specified in 'path' attribute doesn't exist or cannot be created.");
+                }
             }
         }
         return $path . '/';

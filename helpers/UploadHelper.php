@@ -23,7 +23,7 @@ class UploadHelper
      */
     public static function fileExist($path, $attribute)
     {
-        return is_file(Path::getUploadPath($path) . $attribute);
+        return file_exists(Path::getUploadPath($path) . $attribute);
     }
 
     /**
