@@ -12,4 +12,5 @@ return [
     'success-alert-text-audio' => 'Аудио файл успешно загружен',
     'success-bottom-text-audio' => 'Прослушивать файл в плеере можно после сохранения записи!!!!',
     'error-btn-text' => 'Ошибка загрузки файла',
+    'upload-in-progress' => 'Подождите идет загрузка файла',
 ];

@@ -7,23 +7,34 @@ use Yii;
 use sergios\uploadFile\helpers\UploadHelper;
 use sergios\uploadFile\helpers\Path;
 use yii\db\ActiveRecord;
+use yii\web\NotFoundHttpException;
 use yii\web\UploadedFile;
 use yii\helpers\ArrayHelper;
 
 
 class UploadFileAction extends Action
 {
+    private $post = null;
+
+    public function init()
+    {
+        $this->post = Yii::$app->request->post();
+        if(!$this->post){
+            throw new NotFoundHttpException();
+        }
+
+        parent::init();
+    }
 
     public function run()
     {
         $response = ['success' => false, 'image' => false, 'errors' => false];
-        $post = Yii::$app->request->post();
-        $namespace = $post['namespace'];
-        $path = $post['uploadPath'];
-        $maxFileSize = (double)$post['maxFileSize'];
-        $language = $post['language'];
-        $tempAttributeName = $post['tempAttribute'];
-        $resizeOptions = $this->prepareUploadOptions($post);
+        $namespace = $this->post['namespace'];
+        $path = $this->post['uploadPath'];
+        $maxFileSize = (double)$this->post['maxFileSize'];
+        $language = $this->post['language'];
+        $tempAttributeName = $this->post['tempAttribute'];
+        $resizeOptions = $this->prepareUploadOptions($this->post);
 
         /** @var $model ActiveRecord */
         $model = Yii::createObject(['class' => $namespace]);

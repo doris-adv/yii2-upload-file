@@ -48,8 +48,8 @@ $fullUploadUrl = (is_null($config['model']->{$attribute})) ? '' : $uploadUrl . $
                     data.formData = ' . json_encode($config['responseJson']['upload-event']) . ';                   
             }',
             'fileuploadprogress' => 'function (e, data) {
-                 uploadStatusButton("' . $tempAttributeId . '");                                         
-                 $(document).find(\'.preloader-' . $attribute . '\').show();                  
+                 uploadStatusButton("' . $tempAttributeId . '","' . $attribute . '");                                         
+                 $(document).find(\'.preloader-' . $attribute . '\').show();                
             }',
             'fileuploaddone' => 'function(e, data) {              
                   var errorsBlock' . $attribute . ' = $(document).find(\'.errors-' . $attribute . ' .error-summary\');
@@ -80,7 +80,8 @@ $fullUploadUrl = (is_null($config['model']->{$attribute})) ? '' : $uploadUrl . $
                                $(errorsBlock' . $attribute . ').append(\'<br />\'+errors[i]);    
                            }                                                                                 
                        }                             
-                  }                                                                                                  
+                  }
+                  $(document).find(\'#' . $tempAttributeId . '\').parent().removeClass(\'btn-default\');                    
             }',
         ],
     ]);

@@ -12,4 +12,5 @@ return [
     'success-alert-text-audio' => 'The audio file has been successfully uploaded',
     'success-bottom-text-audio' => 'Listen to the file in the player after saving the recording!!!!',
     'error-btn-text' => 'Error loading file',
+    'upload-in-progress' => 'Please wait while downloading the file',
 ];

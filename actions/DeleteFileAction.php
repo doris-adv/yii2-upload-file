@@ -6,19 +6,30 @@ use yii\base\Action;
 use Yii;
 use sergios\uploadFile\helpers\UploadHelper;
 use yii\db\ActiveRecord;
+use yii\web\NotFoundHttpException;
 
 class DeleteFileAction extends Action
 {
+    private $post = null;
+
+    public function init()
+    {
+        $this->post = Yii::$app->request->post();
+        if(!$this->post){
+           throw new NotFoundHttpException();
+        }
+
+        parent::init();
+    }
 
     public function run()
     {
         $response = ['success' => true];
-        $post = Yii::$app->request->post();
-        $id = (integer)$post['id'];
-        $fileName = $post['fileName'];
-        $attribute = $post['attribute'];
-        $path = $post['path'];
-        $namespace = $post['namespace'];
+        $id = (integer)$this->post['id'];
+        $fileName = $this->post['fileName'];
+        $attribute = $this->post['attribute'];
+        $path = $this->post['path'];
+        $namespace = $this->post['namespace'];
 
         \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
 
