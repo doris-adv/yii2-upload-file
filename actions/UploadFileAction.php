@@ -1,11 +1,11 @@
 <?php
 
-namespace sergios\uploadFile\actions;
+namespace doris\uploadFile\actions;
 
 use yii\base\Action;
 use Yii;
-use sergios\uploadFile\helpers\UploadHelper;
-use sergios\uploadFile\helpers\Path;
+use doris\uploadFile\helpers\UploadHelper;
+use doris\uploadFile\helpers\Path;
 use yii\db\ActiveRecord;
 use yii\web\NotFoundHttpException;
 use yii\web\UploadedFile;

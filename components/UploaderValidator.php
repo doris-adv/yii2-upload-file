@@ -1,6 +1,6 @@
 <?php
 
-namespace sergios\uploadFile\components;
+namespace doris\uploadFile\components;
 
 use Yii;
 use yii\helpers\ArrayHelper;

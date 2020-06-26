@@ -1,6 +1,6 @@
 <?php
 
-namespace sergios\uploadFile\helpers;
+namespace doris\uploadFile\helpers;
 
 use Yii;
 use yii\helpers\FileHelper;

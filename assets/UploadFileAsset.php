@@ -1,12 +1,12 @@
 <?php
-namespace sergios\uploadFile\assets;
+namespace doris\uploadFile\assets;
 
 use yii\web\AssetBundle;
 use yii\web\View;
 
 class UploadFileAsset extends AssetBundle
 {
-    public $sourcePath = '@vendor/sergios/yii2-upload-file/assets/files';
+    public $sourcePath = '@vendor/doris/yii2-upload-file/assets/files';
 
     public $config = [];
     public $css = [

@@ -1,10 +1,10 @@
 <?php
 
-namespace sergios\uploadFile;
+namespace doris\uploadFile;
 
-use sergios\uploadFile\assets\UploadFileAsset;
-use sergios\uploadFile\helpers\UploadHelper;
-use sergios\uploadFile\components\UploaderFactory;
+use doris\uploadFile\assets\UploadFileAsset;
+use doris\uploadFile\helpers\UploadHelper;
+use doris\uploadFile\components\UploaderFactory;
 use yii\base\Widget;
 use yii\db\ActiveRecord;
 use yii\helpers\Html;

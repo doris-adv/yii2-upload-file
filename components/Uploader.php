@@ -1,8 +1,8 @@
 <?php
 
-namespace sergios\uploadFile\components;
+namespace doris\uploadFile\components;
 
-use sergios\uploadFile\helpers\UploadHelper;
+use doris\uploadFile\helpers\UploadHelper;
 use yii\base\InvalidConfigException;
 use yii\helpers\ArrayHelper;
 use Yii;
@@ -170,7 +170,7 @@ abstract class Uploader
      */
     public function getTranslations()
     {
-        return require(Yii::getAlias('@vendor/sergios/yii2-upload-file/messages/default/') . "{$this->language}.php");
+        return require(Yii::getAlias('@vendor/doris/yii2-upload-file/messages/default/') . "{$this->language}.php");
     }
 
     /**
@@ -180,7 +180,7 @@ abstract class Uploader
      */
     public static function translateErrors($language)
     {
-        return require(Yii::getAlias('@vendor/sergios/yii2-upload-file/messages/errors/') . "{$language}.php");
+        return require(Yii::getAlias('@vendor/doris/yii2-upload-file/messages/errors/') . "{$language}.php");
     }
 
     /**

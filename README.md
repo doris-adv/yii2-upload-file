@@ -8,13 +8,13 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-composer require sergios/yii2-upload-file 'dev-master'
+composer require doris/yii2-upload-file 'dev-master'
 ```
 
 or add
 
 ```
-"sergios/yii2-upload-file": "dev-master"
+"doris/yii2-upload-file": "dev-master"
 ```
 
 to the require section of your `composer.json` file.
@@ -35,7 +35,7 @@ yii2-upload-file
     options => [
         1) multiple - by default false,
         2) uploadMineType - depends on param uploadType, if this option will not be specified upload file widget automaticaly determine uploadMineType.
-             You may set another mineTypes using sergios\uploadFile\helpers\UploadHelper. 
+             You may set another mineTypes using doris\uploadFile\helpers\UploadHelper. 
              There where some methods fo set mine types: 
               - UploadHelper::uploadMineTypeForImages()
               - UploadHelper::uploadMineTypeForVideo()
@@ -70,8 +70,8 @@ Once the extension is installed, simply use it in your code by  :
 ```php
 <?php
 use yii\helpers\ArrayHelper;
-use sergios\uploadFile\actions\UploadFileAction;
-use sergios\uploadFile\actions\DeleteFileAction;
+use doris\uploadFile\actions\UploadFileAction;
+use doris\uploadFile\actions\DeleteFileAction;
 
 class PostController extends \yii\web\Controller
 {
@@ -89,8 +89,8 @@ class PostController extends \yii\web\Controller
 ## Upload image example
 ```php
 <?php
-use sergios\uploadFile\components\Uploader;
-use sergios\uploadFile\UploadFileWidget;
+use doris\uploadFile\components\Uploader;
+use doris\uploadFile\UploadFileWidget;
 ?>
 
 <?=  UploadFileWidget::widget([ 
@@ -120,8 +120,8 @@ use sergios\uploadFile\UploadFileWidget;
 ## Upload video example
 ```php
 <?php
-use sergios\uploadFile\components\Uploader;
-use sergios\uploadFile\UploadFileWidget;
+use doris\uploadFile\components\Uploader;
+use doris\uploadFile\UploadFileWidget;
 ?>
 
 <?=  UploadFileWidget::widget([ 
@@ -146,9 +146,9 @@ use sergios\uploadFile\UploadFileWidget;
 ## Upload file example
 ```php
 <?php
-use sergios\uploadFile\components\Uploader;
-use sergios\uploadFile\UploadFileWidget;
-use sergios\uploadFile\components\FileUploader;
+use doris\uploadFile\components\Uploader;
+use doris\uploadFile\UploadFileWidget;
+use doris\uploadFile\components\FileUploader;
 ?>
 
 <?=  UploadFileWidget::widget([ 
@@ -174,8 +174,8 @@ use sergios\uploadFile\components\FileUploader;
 ## Upload audio file example
 ```php
 <?php
-use sergios\uploadFile\components\Uploader;
-use sergios\uploadFile\UploadFileWidget;
+use doris\uploadFile\components\Uploader;
+use doris\uploadFile\UploadFileWidget;
 ?>
 
 <?=  UploadFileWidget::widget([ 

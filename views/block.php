@@ -1,7 +1,7 @@
 <?php
 use dosamigos\fileupload\FileUpload;
 use yii\helpers\Html;
-use sergios\uploadFile\helpers\UploadHelper;
+use doris\uploadFile\helpers\UploadHelper;
 
 /**
  * Template for custom uploading file (for image files)

@@ -1,9 +1,9 @@
 <?php
 
-namespace sergios\uploadFile\helpers;
+namespace doris\uploadFile\helpers;
 
-use sergios\uploadFile\components\FileUploader;
-use sergios\uploadFile\components\Uploader;
+use doris\uploadFile\components\FileUploader;
+use doris\uploadFile\components\Uploader;
 use yii\base\InvalidConfigException;
 use yii\imagine\Image;
 use Imagine\Image\Box;

@@ -1,8 +1,8 @@
 <?php
 
-namespace sergios\uploadFile\components;
+namespace doris\uploadFile\components;
 
-use sergios\uploadFile\helpers\UploadHelper;
+use doris\uploadFile\helpers\UploadHelper;
 
 class FileUploader extends Uploader
 {
