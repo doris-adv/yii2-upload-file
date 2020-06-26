@@ -1,5 +1,5 @@
 <?php
-namespace doris-adv\uploadFile\assets;
+namespace doris\uploadFile\assets;
 
 use yii\web\AssetBundle;
 

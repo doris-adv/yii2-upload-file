@@ -17,7 +17,7 @@ class UploadFileAsset extends AssetBundle
     ];
 
     public $depends = [
-        'dosamigos\fileupload\FileUploadAsset',
+        'FileUploadAssetBS4', // same as dosamigos\fileupload\FileUploadAsset but with Bootstrap4 dependence
         'dosamigos\fileupload\BlueimpLoadImageAsset',
         'dosamigos\fileupload\BlueimpCanvasToBlobAsset',
     ];
